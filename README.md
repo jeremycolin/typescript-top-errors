@@ -1,6 +1,6 @@
 # TypeScript Top Errors
 
-Get the top errors in your repository
+Get the top TypeScript errors in your codebase
 
 ## Quick Start
 
