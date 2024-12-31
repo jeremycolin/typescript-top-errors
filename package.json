@@ -10,7 +10,7 @@
   "author": "Jeremy Colin",
   "license": "MIT",
   "main": "dist/cli.js",
-  "bin": "node ./dist/cli.js",
+  "bin": "./dist/cli.js",
   "files": [
     "dist"
   ],
