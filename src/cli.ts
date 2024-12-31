@@ -6,7 +6,7 @@ const ARG_REGEX = /^-(?<key>\w+)=(?<value>.*)$/;
 async function main() {
   let priorityErrorsCount = 10;
   let priorityMessagesCount = 10;
-  let inputFile = "toparse.txt";
+  let inputFile = "";
 
   process.argv.slice(2).forEach((arg) => {
     const match = arg.match(ARG_REGEX);
@@ -26,6 +26,13 @@ async function main() {
       process.exit(1);
     }
   });
+
+  if (!inputFile) {
+    console.error(
+      "Missing or invalid inputFile argument (example: -inputFile=text.txt)"
+    );
+    process.exit(1);
+  }
 
   const {
     tsCodes,

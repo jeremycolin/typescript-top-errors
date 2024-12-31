@@ -21,7 +21,7 @@ type MappedTsErrorCodes = Map<
 
 export async function mapTsErrorMessages(): Promise<MappedTsErrorCodes> {
   const rawTsErrorCodesString = readFileSync(
-    resolve("data", "typescript-error-codes.json"),
+    resolve(__dirname, "data", "typescript-error-codes.json"),
     "utf-8"
   );
 

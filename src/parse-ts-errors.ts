@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import type { Category } from "./load-ts-error-codes";
 import { mapTsErrorMessages } from "./load-ts-error-codes";
+import { resolve } from "node:path";
 
 export type TsCodes = Array<number>;
 
@@ -39,7 +40,7 @@ export async function getTopTsErrors({
 }> {
   const tsErrorCodes = await mapTsErrorMessages();
 
-  const rawInputString = readFileSync(inputFile, "utf-8");
+  const rawInputString = readFileSync(resolve(inputFile), "utf-8");
   const lines = rawInputString.split("\n");
 
   const tsCodes: TsCodes = [];
