@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { getTopTsErrors } from "./parse-ts-errors";
 import { printTsErrors } from "./print-ts-errors";
 

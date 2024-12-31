@@ -1,6 +1,6 @@
 {
   "name": "typescript-top-errors",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "Get the top TypeScript errors in your repository",
   "keywords": [
     "typescript",
@@ -10,7 +10,7 @@
   "author": "Jeremy Colin",
   "license": "MIT",
   "main": "dist/cli.js",
-  "bin": "node dist/cli.js",
+  "bin": "node ./dist/cli.js",
   "files": [
     "dist"
   ],
