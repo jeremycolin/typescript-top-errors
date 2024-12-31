@@ -1,21 +1,22 @@
 {
   "name": "typescript-top-errors",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Get the top TypeScript errors in your repository",
-  "homepage": "https://github.com/jeremycolin/typescript-top-errors",
-  "main": "dist/cli.js",
   "keywords": [
     "typescript",
     "errors"
   ],
+  "homepage": "https://github.com/jeremycolin/typescript-top-errors",
   "author": "Jeremy Colin",
   "license": "MIT",
-  "scripts": {
-    "check:exports": "attw --pack ."
-  },
+  "main": "dist/cli.js",
+  "bin": "dist/cli.js",
   "files": [
     "dist"
   ],
+  "scripts": {
+    "check:exports": "attw --pack ."
+  },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.17.2",
     "@types/node": "^22.10.2",
