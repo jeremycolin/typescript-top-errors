@@ -1,6 +1,6 @@
 {
   "name": "typescript-top-errors",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Get the top TypeScript errors in your repository",
   "keywords": [
     "typescript",
@@ -23,8 +23,5 @@
     "prettier": "^3.4.2",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
-  },
-  "dependencies": {
-    "typescript-top-errors": "^0.5.0"
   }
 }
