@@ -8,26 +8,32 @@ Get the top errors in your repository
 
 Save your TypeScript diagonistic (tsc) output in a `.txt` file such as `ts-errors.txt`
 
+For example `tsc > ts.errors.txt`
+
 ### Step 2
 
 Run the CLI:
 
 `npx typescript-top-errors -inputFile=ts.errors.txt`
 
-`npm exec typescript-top-errors`
+`pnpm exec typescript-top-errors`
 
 ## Options
 
-# -inputFile
+### -inputFile
 
 Path to the tsc output file
 
-# -topErrors
+### -topErrors
 
 Numbers of TypeScript errors to report (default is 10)
 
-# -topMessages
+### -topMessages
 
 Numbers of Unique Typescript specific to your codebase to report (default is 10)
 
-You can also
+## Programmatic use
+
+You can also directly load the errors in a TS or Node module through exposed functions such as `getTopTsErrors` in `parse-ts-errors`
+
+For example `import { getTopTsErrors } from "typescript-top-errors/dist/parse-ts-errors"`

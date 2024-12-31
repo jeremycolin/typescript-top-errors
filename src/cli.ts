@@ -31,7 +31,7 @@ async function main() {
 
   if (!inputFile) {
     console.error(
-      "Missing or invalid inputFile argument (example: -inputFile=text.txt)"
+      "Missing or invalid inputFile argument (example: -inputFile=ts-errors.txt)"
     );
     process.exit(1);
   }
