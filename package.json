@@ -1,6 +1,6 @@
 {
   "name": "typescript-top-errors",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Get the top TypeScript errors in your repository",
   "keywords": [
     "typescript",
