@@ -22,7 +22,13 @@ export type PriorititizedErrorMessages = Array<{
   count: number;
 }>;
 
-const TS_ERROR_REGEX = /(.*): error TS(?<code>\d+): (?<message>.*\.)/;
+export type FilesErrors = Array<{
+  file: string;
+  count: number;
+}>;
+
+const TS_ERROR_REGEX =
+  /^(?<file>.*)\(\d+,\d+\): error TS(?<code>\d+): (?<message>.*\.)/;
 
 export async function getTopTsErrors({
   inputFile,
@@ -37,6 +43,7 @@ export async function getTopTsErrors({
   tsCodesMap: TsCodesMap;
   prioritizedErrorCodes: PrioritizedErrorCodes;
   priorititizedErrorMessages: PriorititizedErrorMessages;
+  filesErrors: FilesErrors;
 }> {
   const tsErrorCodes = await mapTsErrorMessages();
 
@@ -46,9 +53,16 @@ export async function getTopTsErrors({
   const tsCodes: TsCodes = [];
   const tsCodesMap: TsCodesMap = new Map();
   const sourceCodeMessagesMap = new Map<string, number>();
+  const filesErrorsMap = new Map<string, number>();
 
   for (const line of lines) {
     const match = line.match(TS_ERROR_REGEX);
+
+    if (match?.groups?.file) {
+      const file = match.groups.file;
+      const fileErrorsCount = filesErrorsMap.get(file) ?? 0;
+      filesErrorsMap.set(file, fileErrorsCount + 1);
+    }
 
     if (match?.groups?.code) {
       const tsCode = Number(match.groups.code);
@@ -89,10 +103,19 @@ export async function getTopTsErrors({
       count,
     }));
 
+  const filesErrors: FilesErrors = Array.from(filesErrorsMap.entries())
+    .sort((a, b) => b[1] - a[1])
+    .filter(([_, count]) => count > 20)
+    .map(([file, count]) => ({
+      file,
+      count,
+    }));
+
   return {
     tsCodes,
     tsCodesMap,
     prioritizedErrorCodes,
     priorititizedErrorMessages,
+    filesErrors,
   };
 }

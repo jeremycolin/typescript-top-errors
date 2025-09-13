@@ -8,13 +8,13 @@ Get the top TypeScript errors in your codebase
 
 Save your TypeScript diagonistic (tsc) output in a `.txt` file such as `ts-errors.txt`
 
-For example `tsc > ts.errors.txt`
+For example `tsc > ts-errors.txt`
 
 ### Step 2
 
 Run the CLI:
 
-`npx typescript-top-errors -inputFile=ts.errors.txt`
+`npx typescript-top-errors -inputFile=ts-errors.txt`
 
 `pnpm exec typescript-top-errors`
 

@@ -16,6 +16,7 @@ test("getTopTsErrors with errors and messages count", async (t) => {
     tsCodesMap,
     prioritizedErrorCodes,
     priorititizedErrorMessages,
+    filesErrors,
   } = await getTopTsErrors({
     inputFile: resolve(__dirname, "input.txt"),
     priorityErrorsCount: 5,
@@ -32,12 +33,15 @@ test("getTopTsErrors with errors and messages count", async (t) => {
     tsCodesMap,
     priorititizedErrorMessages,
     prioritizedErrorCodes,
+    filesErrors,
   });
 
-  assert(mockedConsole.mock.calls.length === 12);
+  assert(mockedConsole.mock.calls.length === 14);
   assert(
     mockedConsole.mock.calls[0].arguments[0],
     "Total TS errors in the code:"
   );
   assert(mockedConsole.mock.calls[0].arguments[1] === 55);
+
+  assert(filesErrors[0].count === 45);
 });

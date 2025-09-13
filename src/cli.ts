@@ -41,6 +41,7 @@ async function main() {
     tsCodesMap,
     prioritizedErrorCodes,
     priorititizedErrorMessages,
+    filesErrors,
   } = await getTopTsErrors({
     inputFile,
     priorityErrorsCount,
@@ -52,6 +53,7 @@ async function main() {
     tsCodesMap,
     prioritizedErrorCodes,
     priorititizedErrorMessages,
+    filesErrors,
   });
 }
 
