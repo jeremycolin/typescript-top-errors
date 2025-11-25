@@ -8,6 +8,7 @@ const ARG_REGEX = /^-(?<key>\w+)=(?<value>.*)$/;
 async function main() {
   let priorityErrorsCount = 10;
   let priorityMessagesCount = 10;
+  let filesCount = 20;
   let inputFile = "";
 
   process.argv.slice(2).forEach((arg) => {
@@ -23,6 +24,15 @@ async function main() {
       priorityMessagesCount = Number(value);
     } else if (key === "inputFile") {
       inputFile = value;
+    } else if (key === "filesCount") {
+      if (value === "Infinity") {
+        filesCount = Infinity;
+      } else if (isNaN(Number(value))) {
+        console.error("Invalid filesCount argument (example: -filesCount=20)");
+        process.exit(1);
+      } else {
+        filesCount = Number(value);
+      }
     } else {
       console.error("Unknown argument: ", arg);
       process.exit(1);
@@ -46,6 +56,7 @@ async function main() {
     inputFile,
     priorityErrorsCount,
     priorityMessagesCount,
+    filesCount,
   });
 
   printTsErrors({

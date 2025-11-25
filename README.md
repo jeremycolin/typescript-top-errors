@@ -32,6 +32,10 @@ Numbers of TypeScript errors to report (default is 10)
 
 Numbers of Unique Typescript specific to your codebase to report (default is 10)
 
+## -filesCount
+
+Number of files to display (default is 20) - pass Infinity for all files to be displayed (-filesCount=Infinity)
+
 ## Programmatic use
 
 You can also directly load the errors in a TS or Node module through exposed functions such as `getTopTsErrors` in `parse-ts-errors`

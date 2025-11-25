@@ -34,10 +34,12 @@ export async function getTopTsErrors({
   inputFile,
   priorityErrorsCount,
   priorityMessagesCount,
+  filesCount,
 }: {
   inputFile: string;
   priorityErrorsCount: number;
   priorityMessagesCount: number;
+  filesCount: number;
 }): Promise<{
   tsCodes: TsCodes;
   tsCodesMap: TsCodesMap;
@@ -105,11 +107,11 @@ export async function getTopTsErrors({
 
   const filesErrors: FilesErrors = Array.from(filesErrorsMap.entries())
     .sort((a, b) => b[1] - a[1])
-    .filter(([_, count]) => count > 20)
     .map(([file, count]) => ({
       file,
       count,
-    }));
+    }))
+    .slice(0, filesCount);
 
   return {
     tsCodes,
